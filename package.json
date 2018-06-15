@@ -1,6 +1,6 @@
 {
-  "name": "api-mocker",
-  "version": "0.0.0",
+  "name": "api-mock-proxy",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/pankajupadhyay29/api-mocker"
@@ -9,6 +9,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index"
+  },
+  "bin": {
+    "api-mock-proxy": "./index.js"
   },
   "keywords": [
     "api-mock",

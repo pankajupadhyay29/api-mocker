@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 const defaults = require("./defaults.json");
 const fs = require("fs");
@@ -87,7 +88,6 @@ server.use((req, res, next) => {
       res.setHeader("Content-Type", "application/json");
 
       if (err) {
-        console.log(err);
         const mockRes = options.recordOnly
           ? null
           : getMockedResponse(reqHash, reqObj, data);

@@ -2,6 +2,14 @@
 
 This tool helps developers to continue their task independently of API availability. Developer just need to route all there API request through this tool and it will cache the response and return mocked response in case of errors.
 
+### Uses
+
+- install api-mock-proxy
+  `npm install -g api-mock-proxy`
+- now you can run your mock proxy as
+  `api-mock-proxy -p 8000 -t http://your.api.com`
+  now your proxy server is ready at http://localhost:8000. Just use this URL in all client and you will get the response from http://your.api.com and best part is it will return mocked response if actual api is not working after sometime
+
 ### Available Options
 
 - `port or -p: (default:8080)` -

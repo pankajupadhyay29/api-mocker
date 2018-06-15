@@ -1,6 +1,6 @@
 # Simple API mocking tool
 
-This is a tool to help developers to continue their task independently of API availability. Developer just need to route all there API request through this tool and it will cache the response and return mocked response in case of errors.
+This tool helps developers to continue their task independently of API availability. Developer just need to route all there API request through this tool and it will cache the response and return mocked response in case of errors.
 
 ### Available Options
 

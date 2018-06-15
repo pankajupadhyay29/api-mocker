@@ -1,0 +1,31 @@
+{
+  "port": {
+    "prefix": "p",
+    "helpText": "To specify the port to which mock server will listen",
+    "default": 8080
+  },
+  "targetUrl": {
+    "prefix": "t",
+    "helpText":
+      "To specify the target url where mock server will forward all requests\r\nand return the response back.\r\nThis will be URL for your actual api and mock server will save the response\r\nfor mocking when api respond with error",
+    "default": "http://localhost:80"
+  },
+  "errorMode": {
+    "prefix": "e",
+    "helpText":
+      "this will provide options for mocking on errors, it support 2 modes\r\nall: return mock result for all errors\r\nrefused: return mocked response only if API is not reachable",
+    "default": "all"
+  },
+  "mode": {
+    "prefix": "m",
+    "helpText":
+      "It can take any of the three values mock|record|mix\r\nmock: mock all the request no need to call actual api\r\nrecord: always return response from actual api and create cache for future mocking\r\nmix: Call the actual api and return actual response except error code passed as mockedError",
+    "default": "mix"
+  },
+  "dataPath": {
+    "prefix": "d",
+    "helpText":
+      "path for the mock data, it should be a valid data file.\r\nFor first time just specify the path and mock will be created at that location.\r\nFor running in mock mode there must be pre populated mock data",
+    "default": "./data.json"
+  }
+}

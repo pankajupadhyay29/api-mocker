@@ -1,0 +1,8 @@
+{
+  "port": 8080,
+  "targetUrl": "http://localhost:80",
+  "mockOnly": false,
+  "recordOnly": false,
+  "refusedOnly": false,
+  "dataPath": "./data.json"
+}

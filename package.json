@@ -1,0 +1,30 @@
+{
+  "name": "api-mocker",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pankajupadhyay29/api-mocker"
+  },
+  "description": "API mocking tool helps developers to work when API is not available",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [
+    "api-mock",
+    "mock-server",
+    "test-api"
+  ],
+  "author": "Pankaj Upadhyay",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "epsilonjs": "^2.0.2",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "node-fetch": "^2.1.2",
+    "optimist": "^0.6.1",
+    "request": "^2.87.0",
+    "require-all": "^2.2.0"
+  }
+}

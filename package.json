@@ -1,6 +1,6 @@
 {
   "name": "api-mock-proxy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/pankajupadhyay29/api-mocker"
@@ -21,13 +21,9 @@
   "author": "Pankaj Upadhyay",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.3",
     "epsilonjs": "^2.0.2",
-    "express": "^4.16.3",
     "lodash": "^4.17.10",
     "node-fetch": "^2.1.2",
-    "optimist": "^0.6.1",
-    "request": "^2.87.0",
-    "require-all": "^2.2.0"
+    "optimist": "^0.6.1"
   }
 }

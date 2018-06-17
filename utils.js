@@ -10,14 +10,16 @@ const getOptions = args => {
 
   options.port = args.p || args.port;
   options.targetUrl = args.t || args.targetUrl;
-  options.mockedError = args.e || args.mockedError;
+  options.errorCodes = args.e || args.errorCodes;
 
   options.mockOnly = mode === "mock";
   options.recordOnly = mode === "record";
   options.dataPath = args.d || args.dataPath;
 
-  if (options.mockedError) {
-    options.mockedError = options.mockedError.split(",");
+  if (options.errorCodes && options.errorCodes.indexOf("*") == -1) {
+    options.errorCodes = options.errorCodes.split(",");
+  } else {
+    options.errorCodes = null;
   }
 
   return options;

@@ -12,7 +12,7 @@ This tool helps developers to continue their task independently of API availabil
 
   `api-mock-proxy -p 8000 -t http://your.api.com`
 
-  now your proxy server is ready at http://localhost:8000. Just use this URL in all client and you will get the response from http://your.api.com and best part is it will return mocked response if actual api is not working after sometime
+  now your proxy server is ready at http://localhost:8000. Just use this URL in all client and you will get the response from http://your.api.com. Best part is, it will return mocked response if actual api is not working.
 
 ### Available Options
 

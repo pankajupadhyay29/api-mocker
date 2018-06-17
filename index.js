@@ -5,6 +5,7 @@ const fs = require("fs");
 const _ = require("lodash");
 const http = require("http");
 const fetch = require("node-fetch");
+const pathResolver = require("path").resolve;
 
 const {
   getOptions,
@@ -23,7 +24,9 @@ if (myArgs.h || myArgs.help) {
 
 const options = _.defaults(getOptions(myArgs), defaults);
 
-const data = fs.existsSync(options.dataPath) ? require(options.dataPath) : {};
+const dataPath = pathResolver(options.dataPath);
+const data = fs.existsSync(dataPath) ? require(pathResolver(dataPath)) : {};
+
 const server = http.createServer((req, res) => {
   const reqObj = {
     url: [options.targetUrl, _.trimEnd(req.url, "/")].join(""),

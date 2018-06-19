@@ -39,4 +39,16 @@ This tool helps developers to continue their task independently of API availabil
   For first time just specify the path and mock will be created at that location.
   For running in mock mode there must be pre populated mock data.
 
+- `--cors` -
+  use this to enable cors header for all origin, methods and headers
+
+- `allowOrigin` -
+  provide string to be used in response header 'Access-Control-Allow-Origin'
+
+- `allowMethods` -
+  provide string to be used in response header 'Access-Control-Allow-Methods'
+
+- `allowHeaders` -
+  provide string to be used in response header 'Access-Control-Allow-Headers'
+
 ##### Do not use this for data verification or performance testing

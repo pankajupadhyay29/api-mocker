@@ -9,7 +9,6 @@ const pathResolver = require("path").resolve;
 
 const {
   getOptions,
-  getHash,
   getRequestHash,
   getMockedResponse,
   getHelpText
@@ -28,6 +27,18 @@ const dataPath = pathResolver(options.dataPath);
 const data = fs.existsSync(dataPath) ? require(pathResolver(dataPath)) : {};
 
 const server = http.createServer((req, res) => {
+  if (options.isCors || options.allowOrigin) {
+    res.setHeader("Access-Control-Allow-Origin", options.allowOrigin || "*");
+  }
+
+  if (options.isCors || options.allowMethods) {
+    res.setHeader("Access-Control-Allow-Methods", options.allowMethods || "*");
+  }
+
+  if (options.isCors || options.allowHeaders) {
+    res.setHeader("Access-Control-Allow-Headers", options.allowHeaders || "*");
+  }
+
   const reqObj = {
     url: [options.targetUrl, _.trimEnd(req.url, "/")].join(""),
     method: req.method,

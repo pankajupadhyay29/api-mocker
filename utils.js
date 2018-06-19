@@ -15,6 +15,10 @@ const getOptions = args => {
   options.mockOnly = mode === "mock";
   options.recordOnly = mode === "record";
   options.dataPath = args.d || args.dataPath;
+  options.isCors = args.cors;
+  options.allowOrigin = args.allowOrigin;
+  options.allowHeaders = args.allowHeaders;
+  options.allowMethods = args.allowMethods;
 
   if (options.errorCodes && options.errorCodes.indexOf("*") == -1) {
     options.errorCodes = options.errorCodes.split(",");

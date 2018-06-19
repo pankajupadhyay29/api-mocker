@@ -4,5 +4,6 @@
   "mockOnly": false,
   "recordOnly": false,
   "refusedOnly": false,
-  "dataPath": "./data.json"
+  "dataPath": "./data.json",
+  "isCors": false
 }

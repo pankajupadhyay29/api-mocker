@@ -61,12 +61,17 @@ const server = http.createServer((req, res) => {
   fetch(reqObj.url, fetchOptions)
     .then(response => {
       const contentType = response.headers.get("Content-Type");
+      response.headers.delete("Date");
+      response.headers.delete("Last-Modified");
+
+      const headers = response.headers;
+
       if (contentType.indexOf("text") >= 0) {
         return response.text().then(textRes => {
           return {
             ok: response.ok,
             status: response.status,
-            headers: { "Content-Type": contentType },
+            headers,
             body: textRes,
             isText: true
           };
@@ -76,7 +81,7 @@ const server = http.createServer((req, res) => {
           return {
             ok: response.ok,
             status: response.status,
-            headers: { "Content-Type": contentType },
+            headers,
             body: jsonRes
           };
         });

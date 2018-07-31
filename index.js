@@ -4,6 +4,7 @@ const defaults = require("./defaults.json");
 const fs = require("fs");
 const _ = require("lodash");
 const http = require("http");
+const https = require("https");
 const fetch = require("node-fetch");
 const pathResolver = require("path").resolve;
 
@@ -11,7 +12,8 @@ const {
   getOptions,
   getRequestHash,
   getMockedResponse,
-  getHelpText
+  getHelpText,
+  getPrintableString
 } = require("./utils");
 const myArgs = require("optimist").argv;
 
@@ -26,7 +28,18 @@ const options = _.defaults(getOptions(myArgs), defaults);
 const dataPath = pathResolver(options.dataPath);
 const data = fs.existsSync(dataPath) ? require(pathResolver(dataPath)) : {};
 
-const server = http.createServer((req, res) => {
+const sslOptions = options.ssl
+  ? {
+      key: options.sslKey,
+      cert: options.sslCert
+    }
+  : {};
+
+const createServer = options.ssl
+  ? _.curry(https.createServer)(sslOptions)
+  : http.createServer;
+
+const server = createServer((req, res) => {
   if (options.isCors || options.allowOrigin) {
     res.setHeader("Access-Control-Allow-Origin", options.allowOrigin || "*");
   }
@@ -105,7 +118,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(options.port, () => {
-  console.info(`\n\nServer listen at http://localhost:${options.port} \n`);
+  console.info(
+    `\n\nServer listen at http://localhost:${
+      options.port
+    }\nwith Options\n${getPrintableString(options)}`
+  );
 });
 
 const sendMockResponse = (res, reqHash, reqObj) => {

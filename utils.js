@@ -1,3 +1,4 @@
+const fs = require("fs");
 const crypto = require("crypto");
 const epsilon = require("epsilonjs");
 const _ = require("lodash");
@@ -25,6 +26,16 @@ const getOptions = args => {
   } else {
     options.errorCodes = null;
   }
+
+  options.sslKey = args.sslKey;
+  options.sslCert = args.sslCert;
+
+  if (!options.sslKey && !!args.keyFile) {
+    options.sslKey = fs.readFileSync(args.keyFile);
+    options.sslCert = fs.readFileSync(args.certFile);
+  }
+
+  options.ssl = options.sslKey && options.sslCert;
 
   return options;
 };
@@ -58,8 +69,8 @@ const findBestMatch = (data, matchObj) => {
     return epsilon.leven(JSON.stringify(matchObj), JSON.stringify(item.req));
   });
   const minIndex = diffIndex.indexOf(Math.min(...diffIndex));
-
-  return data[Math.max(minIndex, 0)].res;
+  const mock = data[Math.max(minIndex, 0)];
+  return (mock || {}).res;
 };
 
 const getMockedResponse = (reqHash, reqObj, data) => {
@@ -95,10 +106,25 @@ const getHelpText = () => {
     .join("\r\n\r\n");
 };
 
+const getPrintableString = obj => {
+  return _(obj)
+    .keys()
+    .map(key => {
+      const item = _.get(obj, key);
+      return item
+        ? `${key}: ${_.isObjectLike(item) ? getPrintableString(item) : item}`
+        : "";
+    })
+    .compact()
+    .join("\r\n")
+    .valueOf();
+};
+
 module.exports = {
   getOptions,
   getHash,
   getRequestHash,
   getMockedResponse,
-  getHelpText
+  getHelpText,
+  getPrintableString
 };

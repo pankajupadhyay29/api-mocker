@@ -1,9 +1,17 @@
 {
   "name": "api-mock-proxy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/pankajupadhyay29/api-mocker"
+  },
+  "engines": {
+    "node": ">=6.5"
+  },
+  "homepage": "https://github.com/pankajupadhyay29/api-mocker",
+  "bugs": {
+    "url": "https://github.com/pankajupadhyay29/api-mocker/issues",
+    "email": "pankajupadhyay29@gmail.com"
   },
   "description": "API mocking tool helps developers to work when API is not available",
   "main": "index.js",

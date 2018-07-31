@@ -51,4 +51,16 @@ This tool helps developers to continue their task independently of API availabil
 - `allowHeaders` -
   provide string to be used in response header 'Access-Control-Allow-Headers'
 
+- `sslKey` -
+  provide string to be used as Key for https server, https server will be created only if both key and certificates are provided
+
+- `sslCert` -
+  provide string to be used as Certificate for https server
+
+- `keyFile` -
+  provide pat for Key file to be used for https server
+
+- `certFile` -
+  provide pat for Certificate file to be used for https server
+
 ##### Do not use this for data verification or performance testing

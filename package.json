@@ -31,7 +31,6 @@
   "dependencies": {
     "epsilonjs": "^2.0.2",
     "lodash": "^4.17.10",
-    "node-fetch": "^2.1.2",
-    "optimist": "^0.6.1"
+    "node-fetch": "^2.1.2"
   }
 }

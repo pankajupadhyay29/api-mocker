@@ -1,6 +1,6 @@
 # Simple API mocking tool
 
-This tool helps developers to continue their task independently of API availability. Developer just need to route all there API request through this tool and it will cache the response and return mocked response in case of errors.
+This tool helps developers to continue their task independently of API availability. The developer just needs to route all their API request through this tool and it will cache the response and return mocked response in case of errors.
 
 ### Uses
 
@@ -12,7 +12,7 @@ This tool helps developers to continue their task independently of API availabil
 
   `api-mock-proxy -p 8000 -t http://your.api.com`
 
-  now your proxy server is ready at http://localhost:8000. Just use this URL in all client and you will get the response from http://your.api.com. Best part is, it will return mocked response if actual api is not working.
+  now your proxy server is ready at http://localhost:8000. Just use this URL in all client and you will get the response from http://your.api.com. The best part is, it will return a mocked response if actual API is not working.
 
 ### Available Options
 
@@ -20,7 +20,7 @@ This tool helps developers to continue their task independently of API availabil
   To specify the port to which mock server will listen
 
 - `targetUrl or -t: (default:http://localhost:80)` -
-  To specify the target url where mock server will forward all requests and return the response back. This will be URL for your actual api and mock server will save the response for mocking when api respond with error
+  To specify the target URL where the mock server will forward all requests and return the response back. This will be URL for your actual API and the mock server will save the response for mocking when API responds with an error
 
 - `errorCodes or -e: (default:*)` -
   this will provide options for mocking on errors, error code will be provided in comma separated list like `404,500,ECONNREFUSED`. Default value is `*` which means it will return mocked response for any error unless mode in not record.
@@ -28,37 +28,37 @@ This tool helps developers to continue their task independently of API availabil
 - `mode or -m: (default:mix)` -
   It can take any of the three values mock|record|mix
 
-  mock: mock all the request no need to call actual api
+  `mock`: mock all the request no need to call actual API
 
-  record: always return response from actual api and create cache for future mocking
+  `record`: always return response from actual API and create a cache for future mocking
 
-  mix: Call the actual api and return actual response except error code passed as mockedError
+  `mix`: Call the actual API and return actual response except error code passed as `mockedError`
 
 - `dataPath or -d: (default:./data.json)` -
   path for the mock data, it should be a valid data file.
-  For first time just specify the path and mock will be created at that location.
-  For running in mock mode there must be pre populated mock data.
+  For the first time just specify the path and mock will be created at that location.
+  For running in mock mode there must be pre-populated mock data.
 
 - `--cors` -
   use this to enable cors header for all origin, methods and headers
 
 - `allowOrigin` -
-  provide string to be used in response header 'Access-Control-Allow-Origin'
+  provide a string to be used in response header 'Access-Control-Allow-Origin'
 
 - `allowMethods` -
-  provide string to be used in response header 'Access-Control-Allow-Methods'
+  provide a string to be used in response header 'Access-Control-Allow-Methods'
 
 - `allowHeaders` -
-  provide string to be used in response header 'Access-Control-Allow-Headers'
+  provide a string to be used in response header 'Access-Control-Allow-Headers'
 
 - `sslKey` -
-  provide string to be used as Key for https server, https server will be created only if both key and certificates are provided
+  provide a string to be used as Key for https server, https server will be created only if both key and certificates are provided
 
 - `sslCert` -
-  provide string to be used as Certificate for https server
+  provide a string to be used as Certificate for https server
 
 - `keyFile` -
-  provide pat for Key file to be used for https server
+  provide pat for the Key file to be used for https server
 
 - `certFile` -
   provide pat for Certificate file to be used for https server

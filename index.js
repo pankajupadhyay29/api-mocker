@@ -9,13 +9,15 @@ const fetch = require("node-fetch");
 const pathResolver = require("path").resolve;
 
 const {
+  getArgs,
   getOptions,
   getRequestHash,
   getMockedResponse,
   getHelpText,
   getPrintableString
 } = require("./utils");
-const myArgs = require("optimist").argv;
+
+const myArgs = getArgs(process.argv.slice(2));
 
 const help = getHelpText();
 if (myArgs.h || myArgs.help) {

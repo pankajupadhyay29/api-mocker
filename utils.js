@@ -5,6 +5,35 @@ const _ = require("lodash");
 
 const help = require("./help.json");
 
+const _getValueFromString = strVal => {
+  try {
+    return JSON.parse(strVal);
+  } catch {
+    return strVal;
+  }
+};
+
+const getArgs = args => {
+  const myArgs = {};
+  for (i = 0; i < args.length; i++) {
+    const currentArg = args[i];
+    const nextArg = i < args.length - 1 ? args[i + 1] : null;
+
+    if (currentArg.indexOf("-") === 0) {
+      const key = _.trimStart(currentArg, "-");
+      if (nextArg && nextArg.indexOf("-") !== 0) {
+        const value = _getValueFromString(nextArg);
+        myArgs[key] = value;
+        i++;
+      } else {
+        myArgs[key] = true;
+      }
+    }
+  }
+
+  return myArgs;
+};
+
 const getOptions = args => {
   const options = {};
   const mode = args.m || args.mode;
@@ -95,8 +124,7 @@ const getMockedResponse = (reqHash, reqObj, data) => {
 };
 
 const getHelpText = () => {
-  return _
-    .keys(help)
+  return _.keys(help)
     .map(key => {
       const item = _.get(help, key);
       return `${key} or -${item.prefix}: (default:${item.default}) -\r\n\t${
@@ -121,6 +149,7 @@ const getPrintableString = obj => {
 };
 
 module.exports = {
+  getArgs,
   getOptions,
   getHash,
   getRequestHash,

@@ -115,6 +115,7 @@ const getMockedResponse = (reqHash, reqObj, data) => {
       return findBestMatch(existing, reqObj);
     }
   }
+
   const flatData = _(data)
     .values()
     .flatten()
